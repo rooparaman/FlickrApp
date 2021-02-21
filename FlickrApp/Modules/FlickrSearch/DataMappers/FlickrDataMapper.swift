@@ -34,7 +34,7 @@ struct FlickrDataMapper {
     }
   }
   
-  func mapImageUrl(farm: Int, server: String, id:String, secret: String) -> String {
+  private func mapImageUrl(farm: Int, server: String, id:String, secret: String) -> String {
     return "https://farm\(farm).static.flickr.com/\(server)/\(id)_\(secret).jpg"
   }
 }
