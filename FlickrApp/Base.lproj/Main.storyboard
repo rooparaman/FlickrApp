@@ -22,7 +22,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vXb-Cg-j6j">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VfO-ix-fEY">
                                     <size key="itemSize" width="200" height="200"/>
@@ -31,7 +31,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="6QR-vu-CpE">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="flickrCell" id="6QR-vu-CpE" customClass="FlickrPhotoCell" customModule="FlickrApp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="kV0-Z0-KDE">
@@ -49,6 +49,9 @@
                                                 <constraint firstAttribute="trailing" secondItem="2Nh-eQ-Ocl" secondAttribute="trailing" id="vMP-u3-mkA"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="flickrImageView" destination="2Nh-eQ-Ocl" id="YMg-NJ-mwH"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -61,10 +64,14 @@
                             <constraint firstItem="oll-vb-nlE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DOW-b7-Rxh"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oll-vb-nlE" secondAttribute="trailing" id="K7w-if-XmF"/>
                             <constraint firstItem="vXb-Cg-j6j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bE3-6e-vmF"/>
-                            <constraint firstItem="vXb-Cg-j6j" firstAttribute="top" secondItem="oll-vb-nlE" secondAttribute="bottom" constant="-12" id="dCK-8H-f62"/>
+                            <constraint firstItem="vXb-Cg-j6j" firstAttribute="top" secondItem="oll-vb-nlE" secondAttribute="bottom" id="dCK-8H-f62"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vXb-Cg-j6j" secondAttribute="trailing" id="tp3-kt-9vl"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="flickrCollectionView" destination="vXb-Cg-j6j" id="gIo-aL-qpF"/>
+                        <outlet property="flickrSearchBar" destination="oll-vb-nlE" id="itG-VX-0gE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

@@ -11,6 +11,8 @@ class FlickrSearchCoordinator: Coordinator {
     self.navigationController = navigationController
   }
   func start() {
+    let flickrSearchViewModel = FlickrSearchViewModel(with: FlickrSearchService())
+    flickrSearchViewController.viewModel = flickrSearchViewModel
     navigationController.pushViewController(flickrSearchViewController, animated: true)
   }
 }
