@@ -43,8 +43,22 @@ extension FlickrSearchViewController {
     super.viewWillTransition(to: size, with: coordinator)
     self.flickrCollectionView.collectionViewLayout.invalidateLayout()
   }
+  
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    guard let viewModel = viewModel else {
+      return
+    }
+    if !searchText.isEmpty && !viewModel.isLoading {
+      let offset = 100
+      let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+      if (bottomEdge + CGFloat(offset) >= scrollView.contentSize.height) {
+        viewModel.fetchPhotos(for: searchText, page: viewModel.pageNo + 1)
+      }
+    }
+  }
 }
 
+// MARK: UISearchBarDelegate methods
 extension FlickrSearchViewController: UISearchBarDelegate {
   
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -65,7 +79,7 @@ extension FlickrSearchViewController: UISearchBarDelegate {
   
 }
 
-
+// MARK: UICollectionViewDataSource methods
 extension FlickrSearchViewController: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return photoItems.count
@@ -80,6 +94,7 @@ extension FlickrSearchViewController: UICollectionViewDataSource {
   }
 }
 
+// MARK: UICollectionViewDelegateFlowLayout methods
 extension FlickrSearchViewController: UICollectionViewDelegateFlowLayout{
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
