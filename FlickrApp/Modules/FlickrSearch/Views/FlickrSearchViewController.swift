@@ -11,6 +11,8 @@ class FlickrSearchViewController: UIViewController {
   var viewModel: FlickrSearchViewModel? = nil
   private var photoItems : [FlickrPhotoModel] = []
   private var searchText = ""
+  private let itemsPerRow: CGFloat = 3
+  private let sectionInsets = UIEdgeInsets(top: 50.0, left: 20.0, bottom: 50.0, right: 20.0)
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -19,6 +21,7 @@ class FlickrSearchViewController: UIViewController {
     flickrSearchBar.showsCancelButton = true
     
     flickrCollectionView.dataSource = self
+    flickrCollectionView.delegate = self
     
     if let viewModel = viewModel {
       viewModel.photos.bind {[weak self] (photos) in
@@ -33,6 +36,13 @@ class FlickrSearchViewController: UIViewController {
     
   }
   
+}
+
+extension FlickrSearchViewController {
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    self.flickrCollectionView.collectionViewLayout.invalidateLayout()
+  }
 }
 
 extension FlickrSearchViewController: UISearchBarDelegate {
@@ -69,3 +79,24 @@ extension FlickrSearchViewController: UICollectionViewDataSource {
     return cell
   }
 }
+
+extension FlickrSearchViewController: UICollectionViewDelegateFlowLayout{
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let paddingSpace = sectionInsets.left * (itemsPerRow + 1)
+    
+    let availableWidth = view.safeAreaLayoutGuide.layoutFrame.width - paddingSpace
+        let widthPerItem = availableWidth / itemsPerRow
+        return CGSize(width: widthPerItem, height: widthPerItem)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return sectionInsets
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return sectionInsets.left
+  }
+  
+  
+}
+
