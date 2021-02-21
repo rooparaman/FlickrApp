@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		B78B12BE25E219B700649EC0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78B12BD25E219B700649EC0 /* AppDelegate.swift */; };
 		B78B12C225E219B700649EC0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78B12C125E219B700649EC0 /* ViewController.swift */; };
-		B78B12C525E219B700649EC0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78B12C325E219B700649EC0 /* Main.storyboard */; };
+		B78B12C525E219B700649EC0 /* FlickerSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78B12C325E219B700649EC0 /* FlickerSearch.storyboard */; };
 		B78B12C725E219B900649EC0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B78B12C625E219B900649EC0 /* Assets.xcassets */; };
 		B78B12CA25E219B900649EC0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B78B12C825E219B900649EC0 /* LaunchScreen.storyboard */; };
 		B78B12D525E219B900649EC0 /* FlickrAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78B12D425E219B900649EC0 /* FlickrAppTests.swift */; };
@@ -58,7 +58,7 @@
 		B78B12BA25E219B700649EC0 /* FlickrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlickrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B78B12BD25E219B700649EC0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B78B12C125E219B700649EC0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		B78B12C425E219B700649EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B78B12C425E219B700649EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/FlickerSearch.storyboard; sourceTree = "<group>"; };
 		B78B12C625E219B900649EC0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B78B12C925E219B900649EC0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B78B12CB25E219B900649EC0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -143,7 +143,6 @@
 				B78B12F025E21B1900649EC0 /* Core */,
 				B78B12BD25E219B700649EC0 /* AppDelegate.swift */,
 				B78B12C125E219B700649EC0 /* ViewController.swift */,
-				B78B12C325E219B700649EC0 /* Main.storyboard */,
 				B78B12C625E219B900649EC0 /* Assets.xcassets */,
 				B78B12C825E219B900649EC0 /* LaunchScreen.storyboard */,
 				B78B12CB25E219B900649EC0 /* Info.plist */,
@@ -277,6 +276,7 @@
 		B78B12FC25E21B8700649EC0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B78B12C325E219B700649EC0 /* FlickerSearch.storyboard */,
 				B78B135125E2278200649EC0 /* FlickrSearchViewController.swift */,
 				B78B136E25E22C6E00649EC0 /* FlickrPhotoCell.swift */,
 			);
@@ -405,7 +405,7 @@
 			files = (
 				B78B12CA25E219B900649EC0 /* LaunchScreen.storyboard in Resources */,
 				B78B12C725E219B900649EC0 /* Assets.xcassets in Resources */,
-				B78B12C525E219B700649EC0 /* Main.storyboard in Resources */,
+				B78B12C525E219B700649EC0 /* FlickerSearch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,12 +488,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		B78B12C325E219B700649EC0 /* Main.storyboard */ = {
+		B78B12C325E219B700649EC0 /* FlickerSearch.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				B78B12C425E219B700649EC0 /* Base */,
 			);
-			name = Main.storyboard;
+			name = FlickerSearch.storyboard;
 			sourceTree = "<group>";
 		};
 		B78B12C825E219B900649EC0 /* LaunchScreen.storyboard */ = {

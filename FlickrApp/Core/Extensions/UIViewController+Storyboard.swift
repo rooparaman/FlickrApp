@@ -6,7 +6,7 @@ import Foundation
 import UIKit
 
 enum Storyboard: String {
-  case main = "Main"
+  case flickrSearch = "FlickerSearch"
 }
 
 extension UIViewController {

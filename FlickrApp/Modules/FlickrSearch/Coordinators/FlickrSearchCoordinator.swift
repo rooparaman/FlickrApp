@@ -5,7 +5,7 @@
 import UIKit
 class FlickrSearchCoordinator: Coordinator {
   let navigationController: UINavigationController
-  private lazy var  flickrSearchViewController = FlickrSearchViewController.instantiate(from: .main)
+  private lazy var  flickrSearchViewController = FlickrSearchViewController.instantiate(from: .flickrSearch)
   
   init(navigationController: UINavigationController) {
     self.navigationController = navigationController
