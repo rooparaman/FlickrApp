@@ -7,6 +7,7 @@ struct Constants {
   static let getFlickrUrl = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=96358825614a5d3b1a1c3fd87fca2b47&format=json&nojsoncallback=1&per_page=21"
   static let placeHolderImage = "placeholder"
   static let photoCellIdentifier = "flickrCell"
+  static let homePageTitle = "Flickr Search"
   
   enum error : String {
     case dataMappingError = "Data is corrupt. Please contact admin"

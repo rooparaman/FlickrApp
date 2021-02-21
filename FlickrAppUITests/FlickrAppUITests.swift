@@ -19,13 +19,31 @@ class FlickrAppUITests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
+    func testSearchPage() throws {
+      let app = XCUIApplication()
+      app.launch()
+      XCUIDevice.shared.orientation = .portrait
 
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+      XCTAssertTrue(app.searchFields["Search Image"].exists)
+      app.searchFields["Search Image"].tap()
+      app.searchFields["Search Image"].typeText("Dogs")
+      XCUIApplication().keyboards.buttons["search"].tap()
+      
+      
+      let collectionViewsQuery = app.collectionViews
+      let colCell = collectionViewsQuery.cells.firstMatch
+      let exists = NSPredicate(format: "exists == true")
+      expectation(for: exists, evaluatedWith: colCell, handler: nil)
+      waitForExpectations(timeout: 5, handler: nil)
+      XCTAssertTrue(colCell.images["flickrImage"].exists)
+      sleep(1)
+      collectionViewsQuery.children(matching: .cell).element(boundBy: 10).children(matching: .other).element.swipeUp()
+      collectionViewsQuery.children(matching: .cell).element(boundBy: 16).children(matching: .other).element.swipeUp()
+      XCUIDevice.shared.orientation = .landscapeRight
+      
+      XCUIDevice.shared.orientation = .portraitUpsideDown
+      XCUIDevice.shared.orientation = .landscapeLeft
+      XCUIDevice.shared.orientation = .portrait
     }
 
     func testLaunchPerformance() throws {

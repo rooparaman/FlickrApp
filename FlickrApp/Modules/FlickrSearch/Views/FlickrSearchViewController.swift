@@ -7,6 +7,7 @@ import UIKit
 class FlickrSearchViewController: UIViewController {
   @IBOutlet weak var flickrCollectionView: UICollectionView!
   @IBOutlet weak var flickrSearchBar: UISearchBar!
+  @IBOutlet weak var messageLabel: UILabel!
   
   var viewModel: FlickrSearchViewModel? = nil
   private var photoItems : [FlickrPhotoModel] = []
@@ -23,16 +24,32 @@ class FlickrSearchViewController: UIViewController {
     flickrCollectionView.dataSource = self
     flickrCollectionView.delegate = self
     
+    self.navigationItem.title = Constants.homePageTitle
+    
     if let viewModel = viewModel {
       viewModel.photos.bind {[weak self] (photos) in
         guard let self = self, photos.count > 0 else { return }
         self.photoItems = photos
         self.viewModel?.isLoading = false
         DispatchQueue.main.async {
+          self.flickrCollectionView.isHidden = false
+          self.messageLabel.isHidden = true
           self.flickrCollectionView.reloadData()
         }
       }
+      
+      viewModel.errorReason.bind {[weak self] (reason) in
+        guard let self = self, !self.searchText.isEmpty  else { return }
+        self.viewModel?.isLoading = false
+        DispatchQueue.main.async {
+          self.messageLabel.text = reason
+          self.messageLabel.isHidden = false
+          self.flickrCollectionView.isHidden = true
+        }
+      }
     }
+    
+    
     
   }
   

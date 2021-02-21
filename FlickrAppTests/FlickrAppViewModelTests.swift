@@ -16,7 +16,12 @@ class FlickrAppViewModelTests: XCTestCase {
     }
 
     func testFlickrViewModel() throws {
-    
+      var flickrImage = UIImage()
+      let viewModel = FlickrPhotoCellViewModel(imageUrl: "Sample", service: FlickrSearchService())
+      viewModel.image.bind { (image) in
+        flickrImage = image
+      }
+      XCTAssertEqual(flickrImage, UIImage(named: Constants.placeHolderImage))
     }
 
     func testPerformanceExample() throws {

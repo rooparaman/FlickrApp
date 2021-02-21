@@ -17,10 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oll-vb-nlE">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="vXb-Cg-j6j">
                                 <rect key="frame" x="0.0" y="100" width="414" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -40,6 +36,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Nh-eQ-Ocl">
                                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                    <accessibility key="accessibilityConfiguration" identifier="flickrImage"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -55,22 +52,39 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <searchBar contentMode="redraw" placeholder="Search Image" translatesAutoresizingMaskIntoConstraints="NO" id="oll-vb-nlE">
+                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start exploring Flickr !!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dWW-Q6-DWa">
+                                <rect key="frame" x="68" y="431.5" width="278" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="SPL-s4-MpZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vXb-Cg-j6j" secondAttribute="bottom" id="94K-86-GS1"/>
+                            <constraint firstItem="dWW-Q6-DWa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="68" id="9Q8-8N-OkD"/>
                             <constraint firstItem="oll-vb-nlE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="AmH-ox-xQR"/>
                             <constraint firstItem="oll-vb-nlE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="DOW-b7-Rxh"/>
+                            <constraint firstItem="dWW-Q6-DWa" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="HLg-9O-d9U"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oll-vb-nlE" secondAttribute="trailing" id="K7w-if-XmF"/>
                             <constraint firstItem="vXb-Cg-j6j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="bE3-6e-vmF"/>
                             <constraint firstItem="vXb-Cg-j6j" firstAttribute="top" secondItem="oll-vb-nlE" secondAttribute="bottom" id="dCK-8H-f62"/>
+                            <constraint firstItem="dWW-Q6-DWa" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="ieX-sY-baD"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vXb-Cg-j6j" secondAttribute="trailing" id="tp3-kt-9vl"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="flickrCollectionView" destination="vXb-Cg-j6j" id="gIo-aL-qpF"/>
                         <outlet property="flickrSearchBar" destination="oll-vb-nlE" id="itG-VX-0gE"/>
+                        <outlet property="messageLabel" destination="dWW-Q6-DWa" id="FKl-NV-M8r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
